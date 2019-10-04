@@ -10,7 +10,7 @@ void swap(char* a, char* b){
 void sort(char a[], int n){
   int i,j;
   for(i = 0; i < n-1; i++){
-    for(j = i; j < n-1; j++){
+    for(j = 0; j < n-1-i; j++){
       if(a[j] < a[j+1]) swap(&a[j], &a[j+1]);
     }
   }
@@ -23,7 +23,6 @@ int main(){
   int len2 = strlen(b);
   sort(a, len1);
   sort(b, len2);
-  printf("%s %s\n",a, b);
   if(len1 != len2){
     printf("NG\n");
   }else{

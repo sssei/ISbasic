@@ -3,7 +3,9 @@
 void str_tolower(char* s){
   int i;
   for(i = 0; s[i] != '\0'; ++i){
-    s[i] = s[i] + 0x20;
+    if(s[i] >= 0x41 && s[i] <= 0x5a){
+      s[i] = s[i] + 0x20;      
+    }
   }
 }
 

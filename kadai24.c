@@ -1,17 +1,21 @@
 #include <stdio.h>
 
+void copy(char s1[], char s2[]){
+  int i;
+  for(i = 0; s1[i] != '\0'; i++){
+    s2[i] = s1[i];
+  }
+  s2[i] = '\0';
+}
+
 void reverse(char a[][10], int n){
-  int i,j;
-  char tmp[10];
+  int i;
+  char tmp[n][10];
   for(i = 0; i < n; i++){
-    int len = 0;
-    for(j = 0; a[i][j] != '\0'; ++j){
-      tmp[j] = a[i][j];
-      len++;
-    }
-    for(j = 0; j < len; ++j){
-      a[i][j] = tmp[len-j-1];
-    }
+    copy(a[i], tmp[i]);
+  }
+  for(i = 0; i < n; i++){
+    copy(tmp[i], a[n-1-i]);
   }
 }
 

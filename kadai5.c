@@ -7,7 +7,7 @@ int main(){
   int i = 2;
   while(a <= n){
     printf("%d ", a);
-    a = i * i;
+    a = a * 2;
     i = i + 1;
   }
   printf("\n");
