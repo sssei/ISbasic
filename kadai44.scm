@@ -1,0 +1,6 @@
+(define (fib x)
+  (define (inner-fib x m acc1 acc2)
+    (if (= x m)
+	(+ acc1 acc2)
+	(inner-fib x (+ m 1) acc2 (+ acc1 acc2))))
+  (inner-fib x 0 -1 1))

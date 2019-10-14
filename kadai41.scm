@@ -1,0 +1,6 @@
+(define (my-gcd a b)
+  (define (inner-gcd a b)
+    (if (= b 0) a (inner-gcd b (modulo a b))))
+  (if (< a b)
+      (inner-gcd b a)
+      (inner-gcd a b)))
