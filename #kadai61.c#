@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define STRING_LENGTH 100
+
+typedef lnode{
+  char word[STRING_LENGTH];
+  char tango[STRING_LENGTH];
+  struct lnode* right;
+  struct lnode* left;
+} Node;
+
+void InsertNode(Node* list, char w[], char t[]){
+  
+}
+
+char* SearchNode(Node* list, char w[]){
+  if(strcmp(list->word, w) == 0) 
+}
