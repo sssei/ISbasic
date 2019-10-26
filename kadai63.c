@@ -4,8 +4,8 @@
 
 typedef struct list{
   int flag;
-  char word[20];
-  char tango[20];
+  char word[100];
+  char tango[100];
 } Node;
 
 Node null;
@@ -25,17 +25,56 @@ int HashFunction(char* word){
   return res % SIZE;
 }
 
+void Print(Node table[]){
+  int i;
+  for(i = 0; i < SIZE; i++){
+    if(table[i].flag == -1){
+      printf("null\n");
+    }else if(table[i].flag == 1){
+      printf("dummy\n");
+    }else{
+      printf("%s %s\n", table[i].word, table[i].tango); 
+    }
+  }
+}
+
+int SearchHash(Node table[], char w[]){
+  int hashValue = HashFunction(w);
+  int cnt = 0;
+  int res = -1;
+  while(1){
+    if(table[hashValue].flag == -1) break;
+    if(table[hashValue].flag == 1){
+      hashValue = (hashValue + 1) % SIZE;
+      cnt++;
+    }else if(strcmp(table[hashValue].word, w) != 0){
+      hashValue = (hashValue + 1) % SIZE;
+      cnt++;
+    }else{
+      res = hashValue;
+      break;
+    }
+    if(cnt > SIZE){
+      break;
+    }
+  }
+  return res;
+}
+
 void InsertHash(Node table[], char w[], char t[]){
   int hashValue = HashFunction(w);
   int cnt = 0;
+  int n = SearchHash(table, w);
+  if(n != -1){
+    strcpy(table[n].tango, t);
+    return;
+  }
   while(table[hashValue].flag == 0){
-    if(strcmp(table[hashValue].word, w) == 0){
-      break;
-    }
     hashValue = (hashValue + 1) % SIZE;
     cnt++;
     if(cnt > SIZE){
       printf("OVERFLOW\n");
+      Print(table);
       return;
     }
   }
@@ -68,41 +107,7 @@ void DeleteHash(Node table[], char w[]){
   table[hashValue] = dummy;
 }
 
-int SearchHash(Node table[], char w[]){
-  int hashValue = HashFunction(w);
-  int cnt = 0;
-  int res = -1;
-  while(1){
-    if(table[hashValue].flag == -1) break;
-    if(table[hashValue].flag == 1){
-      hashValue = (hashValue + 1) % SIZE;
-      cnt++;
-    }else if(strcmp(table[hashValue].word, w) != 0){
-      hashValue = (hashValue + 1) % SIZE;
-      cnt++;
-    }else{
-      res = hashValue;
-      break;
-    }
-    if(cnt > SIZE){
-      break;
-    }
-  }
-  return res;
-}
 
-void Print(Node table[]){
-  int i;
-  for(i = 0; i < SIZE; i++){
-    if(table[i].flag == -1){
-      printf("null\n");
-    }else if(table[i].flag == 1){
-      printf("dummy\n");
-    }else{
-      printf("%s %s\n", table[i].word, table[i].tango); 
-    }
-  }
-}
 
 int main(){
   init();
@@ -111,7 +116,7 @@ int main(){
   for(i = 0; i < SIZE; i++){
     HashTable[i] = null;
   }
-  char order[10];
+  char order[100];
   char Word[100];
   char Tango[100];
   scanf("%s", order);
