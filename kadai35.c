@@ -13,19 +13,15 @@ int main(){
   }
   double xy[2];
   scanf("%lf%lf", &xy[0], &xy[1]);
-  double dis[3] = {};
-  for(i = 0; i < 3; i++){
-    for(j = 0; j < N; j++){
-      if(c[j] == i){
-	dis[i] += sqrt((xy[0] - x[j]) * (xy[0] - x[j]) + (xy[1] - y[j]) * (xy[1] - y[j]));
-      }
+  double minDis = 1000000000;
+  int class;
+  for(i = 0; i < N; i++){
+    double dis = sqrt((x[i] - xy[0]) * (x[i] - xy[0]) + (y[i] - xy[1]) * (y[i] - xy[1]));
+    if(dis < minDis){
+      class = c[i];
+      minDis = dis;
     }
   }
-  if(dis[0] < dis[1]){
-    if(dis[0] < dis[2]) printf("0\n");
-    else printf("2\n");
-  }else{
-    if(dis[1] < dis[2]) printf("1\n");
-    else printf("2\n");
-  }
+  printf("%d\n", class);
 }
+
