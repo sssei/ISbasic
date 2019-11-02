@@ -22,14 +22,9 @@
       l
       (bubble-sort (append-list l (list (car (inner-bubble r)))) (cdr (inner-bubble r)))))
 
-(define (bubble l)
+(define (my-sort l)
   (bubble-sort (list) l))
 
-(define (input t)
-  (let ((cmd (read)))
-    (if (eof-object? cmd)
-	(bubble t)
-	(input (cons cmd t)))))
-(input (list))
+
 
 

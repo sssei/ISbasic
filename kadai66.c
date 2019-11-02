@@ -113,11 +113,9 @@ int warshallFloyd(int n, int a, int b){
     route[r] = p;
     r++;
     for(i = 0; i < n; i++){
-      if(Adj[i][p] == 0) continue;
-      if(d[a][i] + Adj[i][p] == d[a][p]){
+      if(Adj[i][p] != 0 && d[a][i] + Adj[i][p] == d[a][p]){
 	p = i;
-	printf("P: %d (%s)\n", p, name[p]);
-	continue;
+	break;
       }
     }
   }
@@ -169,5 +167,4 @@ int main(){
       printf("%s\n", name[route[i]]);
     }
   }
-  PrintRoute();
 }
