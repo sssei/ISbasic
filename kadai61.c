@@ -85,9 +85,12 @@ Node* DeleteNode(Node** tree, char w[]){
     return x;
   }
   x = minDelete((*tree)->right);
+  char tmp1[STRING_LENGTH], tmp2[STRING_LENGTH];
+  strcpy(tmp1, x->word);
+  strcpy(tmp2, x->tango);
   DeleteNode(tree, x->word);
-  strcpy((*tree)->word, x->word);
-  strcpy((*tree)->tango, x->tango);
+  strcpy((*tree)->word, tmp1);
+  strcpy((*tree)->tango, tmp2);
   return *tree;
 }
 

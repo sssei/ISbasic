@@ -14,21 +14,3 @@
   (let ((x (stack-read st)) (y (stack-read (stack-pop st))))
     (stack-push (stack-pop (stack-pop st)) (* x y))))
 
-(let ((st (list)))
-  (define (main-loop st)
-    (let ((cmd (read)))
-      (cond
-       ((or (equal? cmd '=) (eof-object? cmd))
-        (write (stack-read st)) (newline))
-       ((equal? cmd '+)
-        (main-loop (calc-add st)))
-       ((equal? cmd '-)
-        (main-loop (calc-sub st)))
-       ((equal? cmd '*)
-        (main-loop (calc-mul st)))
-       ((number? cmd)
-        (main-loop (stack-push st cmd)))
-       (else
-        (display "(unknown command)\n")
-        (main-loop st)))))
-  (main-loop st))

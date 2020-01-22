@@ -55,7 +55,7 @@ void InsertListMember(Node** list, int idx, int num){
     new->number = num;
     new->next = *list;
     *list = new;
-  }else if(idx + 1 < CountListSize(*list)){
+  }else if(idx  <= CountListSize(*list)){
     Node* new;
     new = malloc(sizeof(Node));
     new->number = num;
@@ -83,7 +83,7 @@ int main(void)
     DeleteListMember(&list, 5); //リストからの要素削除
     PrintListMember(list);
 
-    InsertListMember(&list,7,11); //リストへの要素挿入
+    InsertListMember(&list,9,11); //リストへの要素挿入
     PrintListMember(list);
 
     return 0;
