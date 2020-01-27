@@ -1,6 +1,0 @@
-char* itoa10(int n, char *buf){
-  if(n < 0){
-    n = -n;
-  }
-  
-}

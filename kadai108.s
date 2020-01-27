@@ -6,7 +6,7 @@ maxof3:
 	sw a2, 0(sp)
 	jal maxof2
 	ld ra, 8(sp)
-	ld a1, 0(sp)
+	lw a1, 0(sp)
 	addi sp, sp, 16
 	addi sp, sp, -16
 	sd ra, 8(sp)

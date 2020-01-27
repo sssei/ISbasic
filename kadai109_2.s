@@ -3,17 +3,17 @@
 mystrcat:
 	addi sp, sp, -32
  	sd ra, 24(sp)
-	sb a0, 20(sp)
-	sb a1, 16(sp)
+	sd a0, 16(sp)
+	sd a1, 8(sp)
 	jal mystrlen
-	sw a0, 12(sp)
-	lb a0, 20(sp)
+	sw a0, 4(sp)
+	ld a0, 8(sp)
 	jal mystrlen
 	mv a1, a0
-	lb a0, 20(sp)
+	ld a0, 16(sp)
 	mv a2, a0
-	lb a3, 16(sp)
-	lw a4, 12(sp)
+	ld a3, 8(sp)
+	lw a4, 4(sp)
 	add a2, a2, a4
 label3:
 	lb a5, 0(a3)
