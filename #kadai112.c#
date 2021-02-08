@@ -1,8 +1,0 @@
-double dot(size_t n, const double v[], const double w[]){
-  int i;
-  double res = 0;
-  for(i = 0; i < n; i++){
-    res += v[i] * w[i];
-  }
-  return res;
-}
